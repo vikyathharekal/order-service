@@ -1,0 +1,15 @@
+---
+kind: "Component"
+spec:
+  type: "Service"
+  lifecycle: "Unknown"
+  owner: "Unknown"
+  system: "devilproj"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: "devilorg-devilproj-svc"
+  tags: []
+  annotations:
+    harness.io/project-url: "https://stress.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/home/orgs/devilorg/projects/devilproj/details"
+    harness.io/cd-serviceId: "svc"
+

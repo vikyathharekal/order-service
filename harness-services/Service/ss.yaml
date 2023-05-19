@@ -1,0 +1,15 @@
+---
+kind: "Component"
+spec:
+  type: "Service"
+  lifecycle: "Unknown"
+  owner: "Unknown"
+  system: "VivekTest"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: "ss"
+  tags: []
+  annotations:
+    harness.io/project-url: "https://stress.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/home/orgs/default/projects/VivekTest/details"
+    harness.io/cd-serviceId: "ss"
+

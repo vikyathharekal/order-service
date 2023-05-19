@@ -1,0 +1,15 @@
+---
+kind: "Component"
+spec:
+  type: "Service"
+  lifecycle: "Unknown"
+  owner: "Unknown"
+  system: "ReconcileServiceV2"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: "svc_noinputs"
+  tags: []
+  annotations:
+    harness.io/project-url: "https://stress.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/home/orgs/default/projects/ReconcileServiceV2/details"
+    harness.io/cd-serviceId: "svc_noinputs"
+
