@@ -1,4 +1,4 @@
-site_name: 'python-pipeline-samples'
+site_name: 'order-service'
 
 nav:
   - Home: index.md
