@@ -1,38 +1,25 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: order-service
+  name: python-pipeline-samples
   annotations:
-    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/component=backstage'
-    backstage.io/kubernetes-namespace: 'vikyath'
-    
-  tags:
-    - java
+    backstage.io/techdocs-ref: dir:.
+#     harness.io/project-url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/vigneshproject/details
+#     circleci.com/project-slug: github/vigneswara-propelo/python-pipeline-samples
+    gitlab.com/project-id: '43877214'
+    jira/project-key: IDP
+    jenkins.io/github-folder: 'CDS-68313'
+    firehydrant.com/service-name: 'python-pipeline-samples'
+    backstage.io/kubernetes-label-selector: 'app=idp-ui'
+    backstage.io/kubernetes-namespace: '63feee14cbf66e3c798c4bdc'
+    github.com/project-slug: vigneswara-propelo/python-pipeline-samples
+    harness.io/project-url: https://stress.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/cf/orgs/aaaaaaaaaaaaaaaaDeepakOrg/projects/ghtest/feature-flags
 
-  links:
-    - url: https://example.com/user
-      title: Examples Users1
-      icon: user
-    - url: https://example.com/group
-      title: Example Group
-      icon: group
-    - url: https://example.com/cloud
-      title: Link with Cloud Icon
-      icon: cloud
-    - url: https://example.com/dashboard
-      title: Dashboard
-      icon: dashboard
-    - url: https://example.com/help
-      title: Support
-      icon: help
-    - url: https://example.com/web
-      title: Website
-      icon: web
-    - url: https://example.com/alert
-      title: Alerts
-      icon: alert
+#     snyk.io/org-name: vigneswara-propelo
+#     snyk.io/project-ids: 7c7766e6-1231-4e4f-b51f-0cbd2aacb227, 4addb946-2ff4-41b7-ae71-2a5d480193ee
 spec:
   type: service
-  lifecycle: prod
-  owner: user-team
-  system: delivery
+  lifecycle: experimental
+  owner: harness_account_all_users
+  providesApis: 
+    - idp-Service-api
