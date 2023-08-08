@@ -1,6 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
+  tags:
+    - java
+    - food-ordering
   name: order-service
   annotations:
     backstage.io/techdocs-ref: dir:.
