@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+metadata:
+  name: default
+  description: Default Organization
+  tags: []
+spec:
+  owner: Unknown
+
