@@ -6,6 +6,10 @@ metadata:
     - food-ordering
   name: order-service
   annotations:
+    backstage: dir:.
+    backstage.io: dir:.
+    backstage-io: dir:.
+    backstage.io/ref: dir:.
     backstage.io/techdocs-ref: dir:.
 #     harness.io/project-url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/vigneshproject/details
 #     circleci.com/project-slug: github/vigneswara-propelo/python-pipeline-samples
