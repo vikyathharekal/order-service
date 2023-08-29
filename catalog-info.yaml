@@ -23,6 +23,6 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: group:test/vikyath.harekal@harness.io
+  owner: harness_account_all_users
   providesApis: 
     - idp-Service-api
