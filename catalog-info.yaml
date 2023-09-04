@@ -22,6 +22,7 @@ metadata:
 #     snyk.io/project-ids: 7c7766e6-1231-4e4f-b51f-0cbd2aacb227, 4addb946-2ff4-41b7-ae71-2a5d480193ee
 spec:
   type: service
+  system: delivery
   lifecycle: experimental
   owner: harness_account_all_users
   providesApis: 
