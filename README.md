@@ -4,7 +4,7 @@ To start the app,<br />
 
 #### STEP 1<br />
 
-We run IDP Service and NG Manager on your local machine.<br />
+We run IDP Service and NG Manager on your local machine<br />
 and proceed to STEP 2<br /><br />
 To run this without setting up harness-core<br />
 We provide the required configuration for it to run by pointing it to [PRE-QA](https://stress.harness.io/). <br />
