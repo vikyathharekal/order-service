@@ -1,0 +1,18 @@
+kind: Component
+apiVersion: backstage.io/v1alpha1
+metadata:
+  name: sample_service_1683156347623
+  title: sample_service
+  description: ""
+  tags: []
+  annotations:
+    harness.io/project-url-stress: https://stress.harness.io/ng/account/rzjR8UyZTpOAd6SLDfdBuw/home/orgs/default/projects/Tran/details
+    harness.io/cd-serviceId: sample_service_1683156347623
+    harness.io/services: |
+      sample_service_1683156347623: https://stress.harness.io/ng/account/rzjR8UyZTpOAd6SLDfdBuw/cd/orgs/default/projects/Tran/services/sample_service_1683156347623
+spec:
+  type: Service
+  lifecycle: Unknown
+  owner: Unknown
+  system: Tran
+

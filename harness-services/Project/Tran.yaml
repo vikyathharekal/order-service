@@ -1,0 +1,11 @@
+kind: System
+apiVersion: backstage.io/v1alpha1
+metadata:
+  name: Tran
+  title: Tran
+  description: ""
+  tags: []
+spec:
+  owner: Unknown
+  domain: default
+
