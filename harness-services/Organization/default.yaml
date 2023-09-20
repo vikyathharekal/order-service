@@ -1,0 +1,10 @@
+kind: Domain
+apiVersion: backstage.io/v1alpha1
+metadata:
+  name: default
+  title: default
+  description: Default Organization
+  tags: []
+spec:
+  owner: Unknown
+
