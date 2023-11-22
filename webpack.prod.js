@@ -1,71 +1,149 @@
-/*
- * Copyright 2023 Harness, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-const { merge } = require('webpack-merge')
 const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const prettier = require('prettier')
+const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
+const {
+  container: { ModuleFederationPlugin },
+  DefinePlugin
+} = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { DefinePlugin } = require('webpack')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
+const { GenerateStringTypesPlugin } = require('@harness/uicore/tools/GenerateStringTypesPlugin')
 
-const commonConfig = require('./webpack.common')
+const moduleFederationConfig = require('./moduleFederation.config')
 const CONTEXT = process.cwd()
 
-const prodConfig = {
+module.exports = {
+  target: 'web',
   context: CONTEXT,
-  entry: path.resolve(CONTEXT, '/src/index.tsx'),
-  mode: 'production',
-  devtool: process.env.ENABLE_SOURCE_MAP ? 'source-map' : false,
-  output: {
-    filename: '[name].[contenthash:6].js',
-    chunkFilename: '[name].[id].[contenthash:6].js'
+  stats: {
+    modules: false,
+    children: false
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 51200,
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-          maxSize: 1e7
-        },
-        blueprintjs: {
-          test: /[\\/]node_modules[\\/](@blueprintjs)[\\/]/,
-          name: 'vendor-blueprintjs',
-          chunks: 'all',
-          priority: 10
-        }
+  output: {
+    publicPath: 'auto',
+    path: path.resolve(CONTEXT, 'dist/'),
+    pathinfo: false
+  },
+  entry: {
+    [moduleFederationConfig.name]: './src/public-path'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        include: /node_modules/,
+        type: 'javascript/auto'
+      },
+      {
+        test: /\.(j|t)sx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.module\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: '@harness/css-types-loader',
+            options: {
+              prettierConfig: CONTEXT
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                mode: 'local',
+                localIdentName: 'idpadmin[local]_[hash:base64:6]',
+                exportLocalsConvention: 'camelCaseOnly'
+              }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.join(CONTEXT, 'src')]
+              },
+              sourceMap: false,
+              implementation: require('sass')
+            }
+          }
+        ]
+      },
+      {
+        test: /(?<!\.module)\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: false
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.join(CONTEXT, 'src')]
+              },
+              implementation: require('sass')
+            }
+          }
+        ]
+      },
+      {
+        test: /\.ya?ml$/,
+        type: 'json',
+        use: [
+          {
+            loader: 'yaml-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(jpg|jpeg|png|svg|gif)$/,
+        type: 'asset'
       }
-    }
+    ]
+  },
+  resolve: {
+    extensions: ['.mjs', '.js', '.ts', '.tsx', '.json'],
+    plugins: [new TsconfigPathsPlugin()]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      ignoreOrder: true,
-      filename: '[name].[contenthash:6].css',
-      chunkFilename: '[name].[id].[contenthash:6].css'
+    new ModuleFederationPlugin(moduleFederationConfig),
+    new DefinePlugin({
+      'process.env': '{}' // required for @blueprintjs/core
     }),
-    new HTMLWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      favicon: 'src/favicon.svg',
-      minify: false,
-      templateParameters: {}
+    new RetryChunkLoadPlugin({
+      maxRetries: 3
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true
+    }),
+    new GenerateStringTypesPlugin({
+      input: 'src/strings/strings.en.yaml',
+      output: 'src/strings/types.ts',
+      partialType: true,
+      preProcess: async content => {
+        const prettierConfig = await prettier.resolveConfig(process.cwd())
+
+        return prettier.format(content, { ...prettierConfig, parser: 'typescript' })
+      }
     })
   ]
 }
-
-module.exports = merge(commonConfig, prodConfig)
