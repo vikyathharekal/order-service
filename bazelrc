@@ -1,7 +1,7 @@
 # Add properties that are shared between developers and ci build system
 
 # Setup java toolchain for compilation
-build --java_language_version=17
+build --java_language_version=18
 
 # Setup java toolchain for execution
 build --java_runtime_version=local_jdk
