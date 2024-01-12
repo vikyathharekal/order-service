@@ -1,0 +1,34 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  namespace: default
+  annotations:
+    backstage.io/managed-by-location: url:https://github.com/vikyathharekal/order-service/tree/main/harness-services/Service/idpapp.yaml
+    backstage.io/managed-by-origin-location: url:https://github.com/vikyathharekal/order-service/blob/main/harness-services/Service/idpapp.yaml
+    backstage.io/view-url: https://github.com/vikyathharekal/order-service/tree/main/harness-services/Service/idpapp.yaml
+    backstage.io/edit-url: https://github.com/vikyathharekal/order-service/edit/main/harness-services/Service/idpapp.yaml
+    backstage.io/source-location: url:https://github.com/vikyathharekal/order-service/tree/main/harness-services/Service/
+    harness.io/project-url: https://qa.harness.io/ng/account/Vp0XSI5MSgiF9p8lIIpThg/home/orgs/default/projects/IDPdeploy/details
+    harness.io/cd-serviceId: idpapp
+  name: idpapp
+  tags: []
+  uid: 8bea0035-1e8f-4a83-a03c-d2dbdc3d66c2
+  etag: b36a2787bbba480ee652811daef31f769fdc29fb
+relations:
+  - type: ownedBy
+    targetRef: group:default/unknown
+    target:
+      kind: group
+      namespace: default
+      name: unknown
+  - type: partOf
+    targetRef: system:default/idpdeploy
+    target:
+      kind: system
+      namespace: default
+      name: idpdeploy
+spec:
+  type: Service
+  lifecycle: Unknown
+  owner: idp
+  system: IDPdeploy
