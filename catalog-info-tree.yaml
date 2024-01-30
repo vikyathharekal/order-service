@@ -8,6 +8,7 @@ metadata:
   name: order-service-tree
   harnessData:
     name: Microservice.AppD
+    nameWithoutDot: MicroserviceAppD
   annotations:
     backstage.io/techdocs-ref: dir:.
 #     harness.io/project-url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/vigneshproject/details
