@@ -6,6 +6,8 @@ metadata:
     - food-ordering
     - tag1
   name: order-service
+  harnessData:
+    name: Microservice.AppD
   annotations:
     backstage.io/techdocs-ref: dir:.
 #     harness.io/project-url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/vigneshproject/details
