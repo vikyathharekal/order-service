@@ -9,6 +9,7 @@ metadata:
   harnessData:
     name: Microservice.AppD
   annotations:
+    backstage.io/source-location: url:https://github.com/vikyathharekal/order-service/blob/main/
     backstage.io/techdocs-ref: dir:.
 #     harness.io/project-url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/vigneshproject/details
 #     circleci.com/project-slug: github/vigneswara-propelo/python-pipeline-samples
