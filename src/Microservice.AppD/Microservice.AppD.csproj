@@ -3,41 +3,46 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Documentation.xml</DocumentationFile>
-    <NoWarn>1701;1702;1705;1591</NoWarn>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <NoWarn>1701;1702;CA1014;CS1591</NoWarn>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <Nullable>Enable</Nullable>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <Copyright>© Copyright 2021 Intelliflo Ltd.</Copyright>
-    <Company>Intelliflo Ltd.</Company>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.18.0" />
-    <PackageReference Include="AWSSDK.APIGateway" Version="3.7.201.21" />
-    <PackageReference Include="AWSSDK.Lambda" Version="3.7.201.46" />
-    <PackageReference Include="AWSSDK.S3" Version="3.7.205.5" />
-    <PackageReference Include="IntelliFlo.Platform.NetCore" Version="18.1.3" />
+    <None Remove="Resources\0.0.0 Script to clean test data.sql" />
+    <None Remove="Resources\1.0.0 Script to populate test data.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\0.0.0 Script to clean test data.sql" />
+    <EmbeddedResource Include="Resources\1.0.0 Script to populate test data.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="IntelliFlo.Platform.NetCore" Version="18.1.0" />
     <PackageReference Include="Intelliflo.Platform.QueryLang" Version="5.0.3" />
-    <PackageReference Include="IntelliFlo.SDK.Clients" Version="54.2023.919.1205" />
-    <PackageReference Include="Microservice.AppD.Sdk" Version="14.0.0" />
-    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
-    <PackageReference Include="System.Runtime.Caching" Version="7.0.0" />
-    <PackageReference Include="System.Security.Cryptography.OpenSsl" Version="5.0.0" />
-    <PackageReference Include="Turbinia" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6" />
+    <PackageReference Include="Quartz" Version="3.3.3" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
+    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.3.3" />
+    <PackageReference Include="Quartz.Plugins.TimeZoneConverter" Version="3.3.3" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.ctmpl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
