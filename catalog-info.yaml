@@ -31,6 +31,6 @@ spec:
   type: service
   system: delivery
   lifecycle: experimental
-  owner: HARNESS_account_all_users
+  owner: harness_account_all_users
   providesApis: 
     - idp-Service-api
