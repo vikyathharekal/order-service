@@ -6,7 +6,7 @@ metadata:
     - food-ordering
     - tag1
   name: order-service
-  customField: custom
+  customField: custom1
   harnessData:
     name: Microservice.AppD
   annotations:
