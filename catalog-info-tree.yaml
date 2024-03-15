@@ -5,6 +5,7 @@ metadata:
     - java
     - food-ordering
     - tag1
+    - tag1
   name: order-service-tree
   harnessData:
     name: Microservice.AppD
