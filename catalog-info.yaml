@@ -5,6 +5,7 @@ metadata:
     - java
     - food-ordering
     - tag1
+    - tag2
   name: order-service
   customField: custom1
   harnessData:
