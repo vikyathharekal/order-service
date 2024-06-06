@@ -6,6 +6,7 @@ metadata:
     - food-ordering
     - tag1
     - tag2
+    - tag3
   name: order-service
   customField: custom1
   harnessData:
