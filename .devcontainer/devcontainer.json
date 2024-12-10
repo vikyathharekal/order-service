@@ -1,5 +1,5 @@
 {
-  "image": "172.19.0.2:5000/hello-world:latest",
+  "image": "172.19.0.2:5000/ubuntu:latest",
   "customizations": {
     "harnessGitspaces": {
       "connectors": [
