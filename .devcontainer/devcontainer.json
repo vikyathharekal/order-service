@@ -4,8 +4,8 @@
     "harnessGitspaces": {
       "connectors": [
         {
-          "type": "DockerRegistry",
-          "identifier": "secure_connect_local_docker"
+          "type": "Artifactory",
+          "identifier": "jfrog_harness"
         }
       ]
     }
